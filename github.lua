@@ -22,7 +22,7 @@ local function get(code,branch,user,repo)
     )
 
     if response then
-        -- error Idk what went wrong
+        -- error Idk what went wrong. "if even possible, just something from the pastebin code"
         local headers = response.getResponseHeaders()
         if not headers["Content-Type"] or not headers["Content-Type"]:find("^text/plain") then
             io.stderr:write("Failed.\n")
