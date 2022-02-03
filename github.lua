@@ -1,9 +1,17 @@
 local tArgs = { ... }
 
+local function printInput()
+    print("Inputs:")
+    print("1: Local file name")
+    print("2: file name on github")
+    print("3: the github branch name")
+    print("4: the repo owner")
+    print("5: the repo name")
+end
 
 local function get(code,branch,user,repo)
 
-    if user == nil then
+    if user == nil or user == "s" then
         user = "Schmarni-Dev"
     end
     if repo == nil then
@@ -46,6 +54,7 @@ if true then
 
     -- Download a file from Github.com
     if #tArgs < 2 then
+        printInput()
         return
     end
 
