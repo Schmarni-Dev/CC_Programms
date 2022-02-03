@@ -22,7 +22,8 @@ local function get(code,branch,user,repo)
     )
 
     if response then
-        -- If spam protection is activated, we get redirected to /paste with Content-Type: text/html
+
+        -- error Idk what went wrong. "if even possible, just something from the pastebin code"
         local headers = response.getResponseHeaders()
         if not headers["Content-Type"] or not headers["Content-Type"]:find("^text/plain") then
             io.stderr:write("Failed.\n")
@@ -42,7 +43,8 @@ local function get(code,branch,user,repo)
 end
 
 if true then
-    -- Download a file from pastebin.com
+
+    -- Download a file from Github.com
     if #tArgs < 2 then
         return
     end
@@ -56,7 +58,8 @@ if true then
         return
     end
 
-    -- GET the contents from pastebin
+
+    -- GET the contents from Github
     local res = get(sCode,tArgs[3],tArgs[4],tArgs[5])
     if res then
         local file = fs.open(sPath, "w")
