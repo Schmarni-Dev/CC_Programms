@@ -22,6 +22,7 @@ local function get(code,branch,user,repo)
     )
 
     if response then
+
         -- error Idk what went wrong. "if even possible, just something from the pastebin code"
         local headers = response.getResponseHeaders()
         if not headers["Content-Type"] or not headers["Content-Type"]:find("^text/plain") then
@@ -42,6 +43,7 @@ local function get(code,branch,user,repo)
 end
 
 if true then
+
     -- Download a file from Github.com
     if #tArgs < 2 then
         return
@@ -55,6 +57,7 @@ if true then
         print("File already exists")
         return
     end
+
 
     -- GET the contents from Github
     local res = get(sCode,tArgs[3],tArgs[4],tArgs[5])
