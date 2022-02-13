@@ -50,6 +50,19 @@ local function get(file,branch,user,repo)
     end
 end
 
+local function use(file,branch,user,repo)
+    local res = get(file,branch,user,repo)
+    if res then
+        local file = fs.open(sPath, "w")
+        file.write(res)
+        file.close()
+
+        print("Downloaded as " .. sFile)
+        return true
+    end
+    return false
+end
+
 if true then
 
     -- Download a file from Github.com
@@ -69,19 +82,14 @@ if true then
 
 
     -- GET the contents from Github
-    local res = get(sCode,tArgs[3],tArgs[4],tArgs[5])
-    if res then
-        local file = fs.open(sPath, "w")
-        file.write(res)
-        file.close()
-
-        print("Downloaded as " .. sFile)
+    if use(sCode,tArgs[3],tArgs[4],tArgs[5]) then
         if tArgs[6] == "true" then
             shell.run(sPath)
         end
     end
+
 end
 
-return {getFile = get}
+return {getFile = use}
 
 
