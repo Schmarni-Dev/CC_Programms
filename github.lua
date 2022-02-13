@@ -77,7 +77,7 @@ if true then
 
         print("Downloaded as " .. sFile)
         if tArgs[6] == "true" then
-            os.run(sPath)
+            shell.run(sPath)
         end
     end
 end
