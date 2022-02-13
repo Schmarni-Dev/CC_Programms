@@ -9,7 +9,7 @@ local function printInput()
     print("5: the repo name")
 end
 
-local function get(code,branch,user,repo)
+local function get(file,branch,user,repo)
 
     if user == nil or user == "s" then
         user = "Schmarni-Dev"
@@ -20,7 +20,7 @@ local function get(code,branch,user,repo)
     if branch == nil then
         branch = "main"
     end
-    local gitdata = user.."/"..repo.."/"..branch.."/".."/"..code
+    local gitdata = user.."/"..repo.."/"..branch.."/".."/"..file
 
 
     -- Add a cache buster so that spam protection is re-checked
@@ -81,5 +81,7 @@ if true then
         end
     end
 end
+
+return {getFile = get}
 
 
