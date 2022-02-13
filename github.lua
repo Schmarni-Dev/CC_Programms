@@ -51,10 +51,11 @@ local function get(file,branch,user,repo)
 end
 
 local function use(file,branch,user,repo,localFile)
-    local sPath = shell.resolve(file)
+    local sFile = file
     if localFile ~= nil then
-        local sPath = shell.resolve(localFile)
+        local sFile = localFile
     end
+    local sPath = shell.resolve(sFile)
     local res = get(file,branch,user,repo)
     if res then
         local file = fs.open(sPath, "w")
