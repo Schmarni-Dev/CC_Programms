@@ -50,7 +50,11 @@ local function get(file,branch,user,repo)
     end
 end
 
-local function use(file,branch,user,repo)
+local function use(file,branch,user,repo,localFile)
+    local sPath = shell.resolve(file)
+    if localFile ~= nil then
+        local sPath = shell.resolve(localFile)
+    end
     local res = get(file,branch,user,repo)
     if res then
         local file = fs.open(sPath, "w")
@@ -82,7 +86,7 @@ if true then
 
 
     -- GET the contents from Github
-    if use(sCode,tArgs[3],tArgs[4],tArgs[5]) then
+    if use(sCode,tArgs[3],tArgs[4],tArgs[5],sFile) then
         if tArgs[6] == "true" then
             shell.run(sPath)
         end
