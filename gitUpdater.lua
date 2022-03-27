@@ -15,6 +15,10 @@ local function printInput()
     print("Inputs:")
     print("1: Valid preset name")
     print("presets can be edited at "..configPath)
+    print("Valid presets")
+    for k, v in pairs(inputs) do
+        print(k)
+    end
 end
 
 local function readJson(path)
