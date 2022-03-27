@@ -29,6 +29,6 @@ end
 
 
 -- GET the contents from Github
-if gitlib.use(sCode,tArgs[3],tArgs[4],tArgs[5],sFile) then
+if gitlib.getFile(sCode,tArgs[3],tArgs[4],tArgs[5],sFile) then
     shell.run(sPath)
 end

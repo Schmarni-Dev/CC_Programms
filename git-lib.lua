@@ -39,18 +39,14 @@ local function get(file,branch,user,repo)
 end
 
 local function use(file,branch,user,repo,localFile)
-    local sFile = file
-    if localFile ~= nil then
-        local sFile = localFile
-    end
-    local sPath = shell.resolve(sFile)
+    local sPath = shell.resolve(localFile)
     local res = get(file,branch,user,repo)
     if res then
         local file = fs.open(sPath, "w")
         file.write(res)
         file.close()
 
-        print("Downloaded as " .. sFile)
+        print("Downloaded as " .. localFile)
         return true
     end
     return false

@@ -17,7 +17,7 @@ local function printInput()
     print("presets can be edited at "..configPath)
     print("Valid presets")
     for k, v in pairs(inputs) do
-        print(k)
+        print(k) 
     end
 end
 
@@ -29,14 +29,12 @@ local function readJson(path)
 end
 
 local function isValid(input)
-    print(fs.exists(configPath))
     if fs.exists(configPath) then
         inputs = readJson(configPath)
     else
         local f =fs.open(configPath,"w")
         f.write(textutils.serialiseJSON(inputs):gsub('",','",\n   '):gsub(':{',':{\n   '):gsub('}','\n}\n'))
     end
-    print(fs.exists(configPath))
 
     for k, v in pairs(inputs) do
         if k == input then
@@ -50,7 +48,7 @@ local function Update(value)
     local t = inputs[value]
     local fPath = shell.resolve(t["file"])
     fs.delete(fPath)
-    gitlib.getFile(t["file"], t["branch"], t["user"], t["repo"])
+    gitlib.getFile(t["file"], t["branch"], t["user"], t["repo"],t["file"])
     print("Done")
     if tArgs[2] == "true" then 
         shell.run(t["file"])
