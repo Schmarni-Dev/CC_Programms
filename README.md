@@ -1,2 +1,3 @@
 # CC_Programms
-my public CC programs
+
+all files that have git in thier names requrie gitlib
